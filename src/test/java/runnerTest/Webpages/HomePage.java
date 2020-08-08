@@ -1,7 +1,7 @@
 package runnerTest.Webpages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,18 +13,22 @@ import java.util.List;
 
 public class HomePage extends ElementUtil{
 
-    By todayclick = By.xpath("//a[@data-day='0']");
+   private By todayclick = By.xpath("//a[@data-day='0']");
    private   By lowTemp=By.xpath("//a[@data-day='0']//span[@class='minTemp']");
    private By temperature= By.xpath("(//div[@class='temps'])[2]//span//span");
    private By maxTemp=By.xpath("//a[@data-day='0']//span[@class='maxTemp']");
 
     public void temperature() {
         WebElement element = BasePage.get().findElement(todayclick);
-        JavaScruptUtil.scrollIntoView(element, BasePage.get());
-        WebDriverWait wait = new WebDriverWait(BasePage.get(), 10);
-        wait.until(ExpectedConditions.elementToBeClickable(todayclick));
+        JavaScriptUtil.scrollDownPage(1000, BasePage.get());
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //WebDriverWait wait = new WebDriverWait(BasePage.get(), 10);
+       // wait.until(ExpectedConditions.elementToBeClickable(todayclick));
         BasePage.get().findElement(todayclick).click();
-
 
     }
 
@@ -65,6 +69,7 @@ public class HomePage extends ElementUtil{
         return max;
 
     }
+
 }
 
 

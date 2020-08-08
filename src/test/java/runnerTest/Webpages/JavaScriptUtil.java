@@ -3,10 +3,11 @@ package runnerTest.Webpages;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import utils.BasePage;
 
-public class JavaScruptUtil extends BasePage {
-    WebDriver driver;
+public class JavaScriptUtil {
+
+
+
     public static void flash(WebElement element, WebDriver driver) {
         JavascriptExecutor js = ((JavascriptExecutor) driver);
         String bgcolor = element.getCssValue("backgroundColor");
@@ -15,7 +16,7 @@ public class JavaScruptUtil extends BasePage {
             changeColor(bgcolor, element, driver);//
         }
     }
-    public void scrollDownPage(int y) {
+    public static void scrollDownPage(int y, WebDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0," + y + ")");
     }
@@ -97,10 +98,8 @@ public class JavaScruptUtil extends BasePage {
     public static void sendKeysUsingJSWithName(WebDriver driver, String name, String value){
         JavascriptExecutor js = ((JavascriptExecutor) driver);
         js.executeScript("document.getElementByName('" + name + "').value='"+value+"'");
-    }public static String getTextByJS(WebDriver driver,WebElement element){
+    }public static String getTextByJS(WebDriver driver, WebElement element){
         JavascriptExecutor js = ((JavascriptExecutor) driver);
         String text=(String)((JavascriptExecutor)driver).executeScript("return arguments[0].innerHTML", element);
         return text;}
 }
-
-

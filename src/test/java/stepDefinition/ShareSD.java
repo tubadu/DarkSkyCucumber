@@ -21,7 +21,7 @@ ShareSD {
         logger.info("Test is starting.......!");
         ConfigReader.getProperty("browser");
         BasePage.get().get(ConfigReader.getProperty("url"));
-        BasePage.get().manage().window().fullscreen();
+        BasePage.get().manage().window().maximize();
     }
     @After
     public void tearDown(Scenario scenario){
